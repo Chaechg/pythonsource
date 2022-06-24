@@ -217,3 +217,60 @@ print()
 list1 = [23, 12, 35, 53, 19]
 for idx, item in enumerate(list1, start=1):
     print("%d : %d" % (idx, item))
+
+# A 학급에 총 10 명의 학생이 있다. 이 학생들의 중간고사 점수는 다음과 같다.
+# [70,60,55,75,95,82,85,100]
+# A 학급의 평균을 구하시오
+
+a_class = [70, 60, 55, 75, 95, 82, 85, 100]
+total = 0
+for num in a_class:
+    total += num
+
+print("A 학급의 평균 %.2f" % (total / len(a_class)))
+
+# sum 함수를 이용해서 for문 없이도 평균값을 구할 수 있다.
+print("A 학급의 평균 %.2f" % (sum(a_class) / len(a_class)))
+
+# ord() : 코드 값 반환
+print(ord("A"))  # 65
+print(ord("a"))  # 97
+
+# chr() : 코드값을 문자로 반환
+print(chr(65))  # A
+
+# 주차장 프로그램
+# 총 5대의 차가 주차 가능 / 맨 마지막 차량부터 빠져나갈 수 있음
+
+parking_lot = []
+top, car_name = 0, "A"
+
+while True:
+    no = int(input("[1] 자동차 넣기 | [2] 자동차 빼기 | [3] 종료 : "))
+
+    if no <= 3:
+        if no == 1:
+            if top >= 5:
+                print("주차장 꽉 찼움")
+            else:
+                parking_lot.append(car_name)
+                print("{} 자동차 들어감. 주차장 상태 ==> {}".format(car_name, parking_lot))
+
+                top += 1
+                car_name = chr(ord(car_name) + 1)
+        elif no == 2:
+            if top > 0:
+                outCar = parking_lot.pop()
+                print("{} 자동차 나감. 주차장 상태 ==> {}".format(outCar, parking_lot))
+
+                top -= 1
+                car_name = chr(ord(car_name) - 1)
+            else:
+                print("빠져나갈 자동차 없음")
+        else:
+            print("프로그램 종료")
+            break
+    else:
+        print("번호를 확인해 주세요")
+
+# List Comprehension (21-12-23-AM 01:04:17)
